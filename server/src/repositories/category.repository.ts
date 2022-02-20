@@ -1,30 +1,32 @@
 import { EntityRepository, Repository } from "typeorm";
-import { Category } from "src/entities/category.entity";
+import { Category, CategoryDocument } from "src/schema/category.schema";
 import { CreateCategoryDto } from "src/category/dtos/create-category.dto";
+import { Model } from 'mongoose';
+import { InjectModel } from "@nestjs/mongoose";
+import { Injectable } from "@nestjs/common";
 
-@EntityRepository(Category)
-export class CategoryRepository extends Repository<Category>{
+@Injectable()
+export class CategoryRepository {
+
+  constructor(@InjectModel(Category.name) private categoryModel:Model<CategoryDocument>){}
+
+
+
     async createCategoy(createCategoryDto:CreateCategoryDto) {
-        const { name,icon,color,image } = createCategoryDto;
-        const category = new Category();
-        
-        category.name = name;
-        category.icon = icon;
-        category.color = color;
-        category.image = image;
-
-        return await this.save(category);
+        return await new this.categoryModel({
+          ...createCategoryDto
+        }).save();
     
        
       }
       async getCategory() {
-        return await this.find();
+        return await this.categoryModel.find().exec();
       }
 
       async deleteCategory(id:string){
 
-        const category =await this.findOne(id);
-        await this.remove(category);
+        //const category =await this.categoryModel.findById(id).exec();
+        await this.categoryModel.findByIdAndDelete(id).exec()
         
 
       }

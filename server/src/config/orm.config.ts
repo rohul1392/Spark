@@ -1,6 +1,7 @@
+import { MongooseModuleOptions } from "@nestjs/mongoose";
 import { TypeOrmModuleOptions } from "@nestjs/typeorm";
 
-export const Config:TypeOrmModuleOptions ={
+export const Config ={
     type:'mongodb',
     url: 'mongodb+srv://spark:3JbTRwKvnv3B1SY8@cluster0.ioocg.mongodb.net/spark?retryWrites=true&w=majority',
     useNewUrlParser:true,

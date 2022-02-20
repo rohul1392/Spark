@@ -8,7 +8,7 @@ import { Repository } from 'typeorm';
 export class CategoryService {
   //constructor(@InjectRepository(Category) private repo: Repository<Category>) {}
   constructor(
-    @InjectRepository(CategoryRepository)
+    //@InjectRepository(CategoryRepository)
     private categoryRepo: CategoryRepository,
   ) {}
 
