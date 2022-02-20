@@ -1,6 +1,6 @@
 import { EntityRepository, Repository } from "typeorm";
 import { Category } from "src/entities/category.entity";
-import { CreateCategoryDto } from "src/product/dtos/create-category.dto";
+import { CreateCategoryDto } from "src/category/dtos/create-category.dto";
 
 @EntityRepository(Category)
 export class CategoryRepository extends Repository<Category>{
