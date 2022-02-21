@@ -9,6 +9,8 @@ import NewUser from "./pages/newUser/NewUser";
 import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
+import SignIn from './pages/user/SignIn'
+import SignUp from './pages/user/SignUP'
 
 function App() {
   return (
@@ -37,6 +39,12 @@ function App() {
           </Route>
           <Route path="/newproduct">
             <NewProduct />
+          </Route>
+          <Route path="/login">
+            <SignIn />
+          </Route>
+          <Route path="/register">
+            <SignUp />
           </Route>
         </Switch>
       </div>
