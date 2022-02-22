@@ -1,4 +1,6 @@
 import { IsBoolean, IsDate, IsNumber, IsString } from "class-validator";
+import mongoose from "mongoose";
+import { Category } from "src/schema/category.schema";
 
 export class CreateProductDto{
    
@@ -17,7 +19,7 @@ export class CreateProductDto{
     @IsNumber()
     price: number;
     @IsString()
-    category: string;
+    category: mongoose.Schema.Types.ObjectId;
     @IsNumber()
     countInStock: number;
     @IsNumber()

@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { CategoryRepository } from 'src/repositories/category.repository';
 import { ProductRepository } from 'src/repositories/product.repository';
 import { CreateProductDto } from './dtos/create-product.dto';
+import { Category } from 'src/schema/category.schema';
 
 @Injectable()
 export class ProductService {
@@ -13,6 +14,6 @@ export class ProductService {
     }
 
     async allProduct(){
-        await this.productRepository.getAllProduct();
+       return await this.productRepository.getAllProduct();
     }
 }

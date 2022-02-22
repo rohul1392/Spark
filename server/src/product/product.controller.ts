@@ -1,4 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Category } from 'src/schema/category.schema';
 import { CreateProductDto } from './dtos/create-product.dto';
 
 import { ProductService } from './product.service';
@@ -14,7 +15,10 @@ export class ProductController {
         return this.productService.create(createProductDto);
 
     }
-    //@Get('/get')
+    @Get('/')
+    getProduct(){
+        return this.productService.allProduct();
+    }
     
     
 }
