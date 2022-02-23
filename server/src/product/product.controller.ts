@@ -6,19 +6,14 @@ import { ProductService } from './product.service';
 
 @Controller('product')
 export class ProductController {
+  constructor(private productService: ProductService) {}
 
-    constructor(private productService:ProductService){}
-
-    @Post('/create')
-    createProduct(@Body() createProductDto:CreateProductDto){
-
-        return this.productService.create(createProductDto);
-
-    }
-    @Get('/')
-    getProduct(){
-        return this.productService.allProduct();
-    }
-    
-    
+  @Post('/create')
+  createProduct(@Body() createProductDto: CreateProductDto) {
+    return this.productService.create(createProductDto);
+  }
+  @Get('/all')
+  getProduct() {
+    return this.productService.allProduct();
+  }
 }

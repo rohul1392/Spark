@@ -4,6 +4,9 @@ import { ProductModule } from './product/product.module';
 import { CategoryModule } from './category/category.module';
 import { MongooseModule } from '@nestjs/mongoose';
 
+import { AdminModule } from './admin/admin.module';
+
+
 
 
 
@@ -11,7 +14,7 @@ import { MongooseModule } from '@nestjs/mongoose';
   imports: [
     //TypeOrmModule.forRoot(Config),
     MongooseModule.forRoot(Config.url),
-    ProductModule, CategoryModule
+    ProductModule, CategoryModule, AdminModule,
   ],
   controllers: [],
   providers: [],
