@@ -3,6 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import {Model} from 'mongoose'
 import { CreateAdminDto } from 'src/admin/dtos/cerate-admin.dto';
 import { AuthService } from 'src/auth/auth.service';
+import { Role } from 'src/auth/role/role.enum';
 import { Admin, AdminDocument } from 'src/schema/admin.schema';
 
 
@@ -16,13 +17,14 @@ export class AdminRepository{
         private authService:AuthService
     ){}
 
-    async createAdmin(createAdminDto:CreateAdminDto){
-        const {name,email,password,role} = createAdminDto;
-        const hashPassword =await this.authService.encrypt(password);
+    async createAdmin(name:string,email:string,Password:string,role:Role){
+        //const {name,email,password,role} = createAdminDto;
+        const password =await this.authService.encrypt(Password);
+
 
         // console.log(password);
         
-         return await new this.adminModel({name,email,hashPassword,role}).save();
+         return await new this.adminModel({name,email,password,role}).save();
 
 
     }

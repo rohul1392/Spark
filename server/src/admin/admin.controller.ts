@@ -8,7 +8,7 @@ export class AdminController {
 
     @Post('/create')
     async create(@Body()createAdminDto:CreateAdminDto){
-        return this.adminService.createAdmin(createAdminDto);
+        return this.adminService.createAdmin(createAdminDto.name,createAdminDto.email,createAdminDto.password,createAdminDto.role);
 
     }
 }
