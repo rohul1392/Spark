@@ -7,8 +7,11 @@ import { CreateAdminDto } from './dtos/cerate-admin.dto';
 export class AdminService {
     constructor(private adminRepository:AdminRepository){}
 
-    async createAdmin(name:string,email:string,password:string,role:Role){
+    async signup(name:string,email:string,password:string,role:Role){
         //const {name,email,password,role} = createAdminDto;
-        return this.adminRepository.createAdmin(name,email,password,role);
+        return this.adminRepository.signup(name,email,password,role);
+    }
+    async signin(email:string,password:string){
+        return this.adminRepository.signin(email,password);
     }
 }

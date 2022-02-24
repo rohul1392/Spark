@@ -6,8 +6,7 @@ export const Config ={
     url: 'mongodb+srv://spark:3JbTRwKvnv3B1SY8@cluster0.ioocg.mongodb.net/spark?retryWrites=true&w=majority',
     useNewUrlParser:true,
     useUnifiedTopology:true,
-    ssl:true,
-    //authSource:'admin', 
+    ssl:true, 
     synchronize:true,
     entities:["dist/**/*.entity{ .ts,.js}"]
 }
