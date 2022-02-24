@@ -30,7 +30,7 @@ export class AdminRepository {
         if(!user){
             throw new BadRequestException("user does not exits")
         }
-        const match= this.authService.decrypt(password,(await user).password);
+        //const match= this.authService.decrypt(password,(await user).password);
         // if(!match){
         //   throw new BadRequestException("Password does not match!");
         // }

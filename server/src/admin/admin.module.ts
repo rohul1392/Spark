@@ -7,7 +7,7 @@ import { AdminRepository } from 'src/repositories/admin.repository';
 import { AuthService } from 'src/auth/auth.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
-import { JwtGuard } from 'src/auth/gurds/jwt.gurd';
+import { Auth } from 'src/auth/gurds/jwt.gurd';
 import { JwtStrategy } from 'src/auth/gurds/jwt.strategy';
 
 @Module({
@@ -15,7 +15,7 @@ import { JwtStrategy } from 'src/auth/gurds/jwt.strategy';
     MongooseModule.forFeature([{name:Admin.name,schema:AdminSchema}]),
     PassportModule.register({
       defaultStrategy: 'jwt',
-      session: true,
+      session: false,
     }),
     JwtModule.register({
       secret: 'secretKey',
@@ -24,11 +24,12 @@ import { JwtStrategy } from 'src/auth/gurds/jwt.strategy';
   ],
   controllers: [AdminController],
   providers: [
+    Auth,
+    JwtStrategy,
     AdminService,
     AdminRepository,
     AuthService,
-    JwtGuard,
-    JwtStrategy
+    
   ]
 })
 export class AdminModule {}

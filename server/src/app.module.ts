@@ -6,15 +6,13 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { AdminModule } from './admin/admin.module';
 
-
-
-
-
 @Module({
   imports: [
     //TypeOrmModule.forRoot(Config),
     MongooseModule.forRoot(Config.url),
-    ProductModule, CategoryModule, AdminModule,
+    ProductModule,
+    CategoryModule,
+    AdminModule,
   ],
   controllers: [],
   providers: [],

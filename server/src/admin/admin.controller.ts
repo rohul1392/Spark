@@ -1,7 +1,7 @@
 import { Body, Controller, Post, Res, UseGuards } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
-import { JwtGuard } from 'src/auth/gurds/jwt.gurd';
+import { Auth } from 'src/auth/gurds/jwt.gurd';
 import { JwtPayload } from 'src/auth/interfaces/jwt-payload.interface';
 import { AdminService } from './admin.service';
 import { CreateAdminDto } from './dtos/cerate-admin.dto';
@@ -23,18 +23,18 @@ export class AdminController {
     );
   }
   @Post('/signin')
-  async signin(@Body() body, @Res({ passthrough: true }) response: Response) {
+  async signin(@Body() body, @Res({ passthrough: true }) response: Response): Promise<{ accessToken: string }> {
     const user = await this.adminService.signin(body.email, body.password);
     const { _id, role } = user;
-    const payload: JwtPayload = { _id, role };
+    const payload:JwtPayload = { _id, role };
     const accessToken = await this.jwtService.signAsync(payload);
     response.cookie('jwt', accessToken, { httpOnly: true });
 
     return { accessToken };
   }
-  @UseGuards(JwtGuard)
+  @UseGuards(Auth)
   @Post('/signout')
-  async logout(@Res({ passthrough: true }) response: Response) {
+  async logout(@Res({ passthrough: true }) response: Response): Promise<string> {
     response.clearCookie('jwt');
 
     return 'Success!';
