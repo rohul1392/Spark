@@ -14,8 +14,11 @@ import {
   Report,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Sidebar() {
+  const { isLogedin , setIsLogedin } = useContext(AuthContext);
   return (
     <div className="sidebar">
       <div className="sidebarWrapper">

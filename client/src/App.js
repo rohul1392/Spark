@@ -23,6 +23,7 @@ function App() {
               <Route component={NotFound} />
             </Switch>
           </Box>
+          <Header />
         </BrowserRouter>
       </ContextProvider>
     </TemplateProvider>

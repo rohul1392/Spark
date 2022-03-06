@@ -11,10 +11,11 @@ import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import SignIn from './pages/user/SignIn'
 import SignUp from './pages/user/SignUP'
-
+import AuthContextProvider from './contexts/AuthContext';
 function App() {
   return (
     <Router>
+      <AuthContextProvider>
       <Topbar />
       <div className="container">
         <Sidebar />
@@ -48,6 +49,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      </AuthContextProvider>
     </Router>
   );
 }
